@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^users/profile/$', views.profile, name='profile'),
 
     url(r'^addRest/$', views.addRest,name='addRest'),
-    url(r'^profile/$', views.profile),
-    url(r'^search/$', views.search),
+    url(r'^profile/$', views.profile, name = 'profile'),
+    url(r'^search/$', views.search, name = 'rateSearch'),
 
 )
