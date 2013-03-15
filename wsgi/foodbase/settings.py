@@ -153,7 +153,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'users',
-    'crispy_forms',
+#    'crispy_forms',
 )
 
 # A sample logging configuration. The only tangible logging
