@@ -1,8 +1,17 @@
+{% extends "base.html" %}
 
+{% block content %}
 <form action="." method="post">
 {% csrf_token %}
-
-        <td> <input type="text" name="keyword" value=""></td> 
-
-<input type="submit" value="Search" />
+		 <fieldset>
+		<legend> Search the score you desire for the restaurant!</legend>
+		
+		<div style="text-align:center">
+        <input type="text" placeholder="Check it out!" name="keyword" value="" >
+		<input type="submit" value="Search" class="btn"/>
+		</div>
+		
+		</fieldset>
 </form>
+
+{% endblock %}
