@@ -3,11 +3,11 @@
 from setuptools import setup
 
 setup(
-    name='YourAppName',
+    name='FoodBase',
     version='1.0',
-    description='OpenShift App',
-    author='Your Name',
-    author_email='example@example.com',
-    url='http://www.python.org/sigs/distutils-sig/',
+    description='FoodBase App | UIUC CS411 Project',
+    author='Lei, Gao, Wu, Xu',
+    author_email='dlei5@illinois.edu',
+    url='http://foodbase-dlei.rhcloud.com/',
     install_requires=['Django>=1.3'],
 )

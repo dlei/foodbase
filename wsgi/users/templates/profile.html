@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% block title %}Add a Favorite Restaurant{% endblock %}
+
+
+{% block content %}
+<form action="." method="post">
+{% csrf_token %}
+	<ul>
+	
+	{% for rest in fav_rest_list %}
+        <tr><li>
+
+        <td><input type="checkbox" name="ids" value="{{rest.id}}"></td>
+        <td> <input type="number" id="{{rest.id}}" name="modify_id_list" value="{{rest.rate}}"></td> 
+        <td>{{rest.restaurantName}}</td>
+
+        </li></tr>
+    {% endfor %}
+
+
+
+	</ul>
+<td> <input type="text" name="update_val" value="a new rate?"></td> 
+<input type="submit" value="Modify Rate" name="modify"/>
+<input type="submit" value="Delete" name="delete"/>
+</form>
+
+{% endblock %}
+

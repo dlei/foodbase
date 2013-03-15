@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Welcome to Foodbase! {% endblock %}
+
+
+{% block content %}
+
+<div class="row">
+<div class="span6 center">
+<form class="form-horizontal" action="." method="POST"> 
+  {% csrf_token %}
+
+                    <fieldset>
+                        <legend>Sign Up</legend>
+  <table> 
+    {{ form.as_table }} 
+  </table> 
+  <p><input type="submit" value="Submit"></p> 
+</form>
+
+
+</fieldset>
+</div>
+</div>
+
+{% endblock %}
