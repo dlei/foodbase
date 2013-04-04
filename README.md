@@ -42,3 +42,4 @@ Micro Social Network. Users can create activities of where to eat and invite fri
 Optional Advanced Functions:
 
 Mobile Application
+
