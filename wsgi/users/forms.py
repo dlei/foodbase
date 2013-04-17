@@ -13,7 +13,7 @@ class CreateUserForm(forms.Form):
 class AddRestForm(forms.Form):
 	
 	restName = forms.CharField(required=True)
-	restUserRate = forms.IntegerField(required=True)
+	restUserRate = forms.IntegerField(required=True, max_value=5)
 
 
 class ProfileForm(forms.Form):

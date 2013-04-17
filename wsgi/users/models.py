@@ -13,10 +13,55 @@ class User(models.Model):
 	objects = UserManager()
 '''
 
-
+'''
 class FavoriteRest(models.Model):
 	user = models.ForeignKey('auth.User')
 	#user = models.CharField(max_length=64)
 	rate = models.IntegerField(default = 0)
 	restaurantName = models.CharField(max_length=128)
+'''
+    
+class UserRestaurant(models.Model):
+    user =models.ForeignKey('auth.User')
+    restaurantId = models.IntegerField()
+    rate = models.IntegerField(default = -1)
+
+
+class Restaurant(models.Model):
+    restaurantName = models.CharField(max_length=128)
+    lattitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+    longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+    category = models.CharField(max_length=128)
+    averageRating = models.DecimalField(max_digits = 2, decimal_places = 1)
+    yelpId = models.IntegerField(default = -1)
+    review_count = models.IntegerField(default = 0)
+    phone = models.CharField(max_length=16)
+    address = models.CharField(max_length=128)
+    image = models.CharField(max_length=256)
+
+
+class BMRestaurant(models.Model):
+    user =models.ForeignKey('auth.User')
+    restaurantId = models.IntegerField()
+
+class UserProfile(models.Model):
+    user = models.ForeignKey('auth.User')
+    lattitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+    longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+
+class Blog(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.CharField(max_length=140)
+    created_time = models.DateTimeField(auto_now=True)
+    
+    def __unicode__(self):
+        return self.title
+
+
+
+
+
+    
+
+
 

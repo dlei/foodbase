@@ -6156,3 +6156,27 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.need_padding {
+	margin-top:30px;
+}
+
+html {
+background: url(http://ringvemedia.com/server//bg.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+*
+{
+ border:0px;
+ } 
+
+
+ 
+ body {
+     background-color: transparent;
+}
+
