@@ -5,11 +5,11 @@ import oauth2
 # Fill in these values
 consumer_key = '79awXH4QknbAhg9izd4lkA'
 consumer_secret = '1ko9jVKOH4QB9DsFJ4x1EsYZAmo'
-token = 'kA03xDqn9dEPIjVvzGQavpJ4lb5dy0hQ'
-token_secret = '-hwT7Y2iijF7YMbbalA1xzuNYF8'
+token = 'HJHR1a2Fh1xB-OTvmZkTno0NvdR6e38U'
+token_secret = '9xXxy0UEk0d0fDyLoLZByHoFwwE'
 
 consumer = oauth2.Consumer(consumer_key, consumer_secret)
-url = 'http://api.yelp.com/v2/search?term=bars&location=sf'
+url = 'http://api.yelp.com/v2/search?term=restaurant&location=champaign'
 
 print 'URL: %s' % (url,)
 
