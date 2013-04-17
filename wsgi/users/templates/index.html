@@ -9,6 +9,68 @@
 
 {% block content %}
 
+<div style="text-align:center;margin-top:10px" >
+<SCRIPT language=JavaScript src="{{ STATIC_PREFIX }}rolling-js/comm.js" type=text/javascript></SCRIPT>
+<SCRIPT language=JavaScript src="{{ STATIC_PREFIX }}rolling-js/swf.js" type=text/javascript></SCRIPT>
+<SCRIPT src='{{ STATIC_PREFIX }}rolling-js/config.inc.js' type=text/javascript></SCRIPT>
+</div>
+
+
+<div class ="need_padding" >
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/users">FoodBase</a>
+          <div class="nav-collapse collapse">
+            {% block sidebar %}
+            <ul class="nav">
+              <li class="active"><a href="/users">Home</a></li>
+              
+              <li><a href="{% url 'createAccount'%}">Register</a></li>
+              <li><a href="{% url 'addRest'%}">Add Restaurant</a></li>
+              <li><a href="{% url 'profile'%}">My Profile</a></li>
+              <li><a href="{% url 'rateSearch'%}">Search</a></li>
+              <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">About</a></li>
+              <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">Contact</a></li>
+              
+              <!--
+              <li class="More">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+          -->
+            </ul>
+
+            {% endblock %}
+
+            <!--
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="Email">
+              <input class="span2" type="password" placeholder="Password">
+              <button type="submit" class="btn">Sign in</button>
+            </form>
+        -->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
 <div class="hero-unit">
         <h1>Hello, Eaters!</h1>
         <p>Our project will be providing a platform for food hunters to get restaurant recommendations based on their previous experience, bookmarked places, restaurants' ratings, location and personal food constraints. Users can also search for restaurants of their own specifications manually. One more feature of our great FoodBase is helping you invite and find your food buddies and you are not enjoying food alone!
