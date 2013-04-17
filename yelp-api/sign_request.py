@@ -9,7 +9,7 @@ token = 'HJHR1a2Fh1xB-OTvmZkTno0NvdR6e38U'
 token_secret = '9xXxy0UEk0d0fDyLoLZByHoFwwE'
 
 consumer = oauth2.Consumer(consumer_key, consumer_secret)
-url = 'http://api.yelp.com/v2/search?term=restaurant&location=champaign'
+url = 'http://api.yelp.com/v2/search?term=restaurant&location=champaign&offset=20'
 
 print 'URL: %s' % (url,)
 
