@@ -29,11 +29,11 @@ class UserRestaurant(models.Model):
 
 class Restaurant(models.Model):
     restaurantName = models.CharField(max_length=128)
-    lattitude = models.DecimalField(max_digits = 6, decimal_places = 4)
-    longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+    latitude = models.DecimalField(max_digits = 6, decimal_places = 4)
+    longitude = models.DecimalField(max_digits = 6, decimal_places = 4)
     category = models.CharField(max_length=128)
     averageRating = models.DecimalField(max_digits = 2, decimal_places = 1)
-    yelpId = models.IntegerField(default = -1)
+    yelpId = models.CharField(max_length=128)
     review_count = models.IntegerField(default = 0)
     phone = models.CharField(max_length=16)
     address = models.CharField(max_length=128)
