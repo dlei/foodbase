@@ -25,60 +25,34 @@
               <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">About</a></li>
               <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">Contact</a></li>
               
-              <!--
-              <li class="More">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
-              </li>
-          -->
             </ul>
 
-            {% endblock %}
+{% endblock %}
 
-            <!--
-            <form class="navbar-form pull-right">
-              <input class="span2" type="text" placeholder="Email">
-              <input class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">Sign in</button>
-            </form>
-        -->
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 	
-	
-	
-<form action="." method="post" align="center">
-{% csrf_token %}
-	<ul>
-	
-	<table align="center">
-	{% for rest in fav_rest_list %}
-        <tr >
-
-        <td text-align:"center"><input type="checkbox" name="ids" value="{{rest.id}}"></td>
-        <td> <input type="number" id="{{rest.id}}" name="modify_id_list" value="{{rest.rate}}"></td> 
-        <td>{{rest.restaurantName}}</td>
-
-        </tr>
-    {% endfor %}
-	</table>
 
 
-	</ul>
-<td> <input type="text" name="update_val" value="a new rate?" class="btn"></td> 
-<input type="submit" value="Modify Rate" name="modify" class="btn"/>
-<input type="submit" value="Delete" name="delete" class="btn"/>
-</form>
+  <table>
+    Favorite!!!!
+<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+{% for r in fav_rest_list %}
+<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+{% endfor %}
+</table>
+
+
+
+  <table>
+    Bookmarked!!!!
+<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+{% for r in bm_rest_list %}
+<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+{% endfor %}
+</table>
 
 {% endblock %}
 

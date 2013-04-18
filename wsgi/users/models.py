@@ -49,19 +49,6 @@ class UserProfile(models.Model):
     lattitude = models.DecimalField(max_digits = 6, decimal_places = 4)
     longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
 
-class Blog(models.Model):
-    title = models.CharField(max_length=30)
-    content = models.CharField(max_length=140)
-    created_time = models.DateTimeField(auto_now=True)
-    
-    def __unicode__(self):
-        return self.title
-
-
-
-
-
-    
 
 
 

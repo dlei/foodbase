@@ -86,43 +86,12 @@ def addRest(request):
 
 @login_required
 def profile(request):
-
-	fav_rest_list = FavoriteRest.objects.filter(user = User.objects.get(email=request.user.email))
-
-
-	
-	if (request.method == 'POST') and (request.POST.getlist('ids')):
-
-		if(request.POST.get('delete')):
-
-			ids = request.POST.getlist('ids')
-		
-			idstring = ','.join(ids)
-			FavoriteRest.objects.extra(where = ['id IN ('+ idstring +')']).delete()
-
-		elif(request.POST.get('modify') and request.POST.get('update_val')!='a new rate?'):
-			form = ProfileForm(request.POST)
-			new_rate = request.POST.get('update_val')
-			ids = request.POST.get('ids')
-			new_rate_list = request.POST.getlist('modify_id_list')
-			
-			tmpRest = FavoriteRest.objects.get(id=ids)
-			tmpRest.rate=new_rate
-			tmpRest.save()
-			
-
-			'''
-			OpId = form.cleaned_data['ids']
-			updateRate = form.cleaned_data['modify_ids']
-			tmpRest = FavoriteRest.objects.get(id=ids)
-			tmpRest.rate=modify_ids
-			tmpRest.save()
-			'''
-		return HttpResponseRedirect('/users/profile')
-	else:
-		form = ProfileForm()
+	userProfile = UserProfile.objects.get(id = request.user.id)
+	fav_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in UserRestaurant.objects.filter(user = request.user.id)]
+	bm_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in BMRestaurant.objects.filter(user = request.user.id)]
 	return render(request,'profile.html',
-				{'fav_rest_list': fav_rest_list, 'form':form})
+				{'fav_rest_list': fav_rest_list, 'bm_rest_list':bm_rest_list,
+				'userProfile',userProfile})
 
 @login_required	
 def search(request):
@@ -178,6 +147,8 @@ def restaurantProfile(request,rId):
 		if request.POST.get('favorite'):
 			# add user restaurant relation
 			print "add favorite"
+
+
 			m = UserRestaurant(rate=5,
 				restaurantId=rId,
 				user=User.objects.get(id=request.user.id),
