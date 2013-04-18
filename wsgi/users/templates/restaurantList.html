@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+
+<table>
+<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+{% for r in obj %}
+<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

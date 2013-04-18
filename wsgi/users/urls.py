@@ -13,5 +13,7 @@ urlpatterns = patterns('',
     url(r'^addRest/$', views.addRest,name='addRest'),
     url(r'^profile/$', views.profile, name = 'profile'),
     url(r'^search/$', views.search, name = 'rateSearch'),
+    url(r'^restaurantList/$', views.restaurantList, name = 'restaurantList'),
+
 
 )

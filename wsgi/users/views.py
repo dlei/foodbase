@@ -165,3 +165,17 @@ def register(request):
 	return render(request,'users.html',
 				{'form': form})
 
+
+
+def restaurantList(request):
+	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all()})
+
+
+
+def restaurantProfile(request):
+
+	return render_to_response('restaurantProfile.html', {'obj': Restaurant.objects.all()})
+	
+	return render_to_response('restaurantProfile.html', {'obj': Restaurant.objects.all()})
+
+
