@@ -23,7 +23,7 @@ class FavoriteRest(models.Model):
     
 class UserRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
-    restaurantId = models.IntegerField()
+    restaurantId = models.IntegerField(unique=True)
     rate = models.IntegerField(default = -1)
 
 
@@ -42,7 +42,7 @@ class Restaurant(models.Model):
 
 class BMRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
-    restaurantId = models.IntegerField()
+    restaurantId = models.IntegerField(unique=True)
 
 class UserProfile(models.Model):
     user = models.ForeignKey('auth.User')

@@ -23,3 +23,4 @@ class ProfileForm(forms.Form):
 	#ifDelete = forms.BooleanField()
 	OpId = forms.IntegerField()
 	updateRate = forms.IntegerField()
+

@@ -171,11 +171,33 @@ def restaurantList(request):
 	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all()})
 
 
+@login_required
+def restaurantProfile(request,rId):
 
-def restaurantProfile(request):
+	if request.method == 'POST':
+		if request.POST.get('favorite'):
+			# add user restaurant relation
+			print "add favorite"
+			m = UserRestaurant(rate=5,
+				restaurantId=rId,
+				user=User.objects.get(id=request.user.id),
+				)
+			m.save()
 
-	return render_to_response('restaurantProfile.html', {'obj': Restaurant.objects.all()})
-	
-	return render_to_response('restaurantProfile.html', {'obj': Restaurant.objects.all()})
+		elif(request.POST.get('bookmark')):
+			print "add bookmark"
+			m = BMRestaurant(
+				restaurantId=rId,
+				user=User.objects.get(id=request.user.id),
+				)
+			m.save()
+
+
+
+
+
+
+	return render(request,'restaurantProfile.html', {'obj': Restaurant.objects.filter(id=rId)})
+
 
 

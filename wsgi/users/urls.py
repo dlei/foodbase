@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^profile/$', views.profile, name = 'profile'),
     url(r'^search/$', views.search, name = 'rateSearch'),
     url(r'^restaurantList/$', views.restaurantList, name = 'restaurantList'),
+    url(r'^restaurantProfile/(?P<rId>\d+)/$', views.restaurantProfile, name = 'restaurantProfile'),
 
 
 )
