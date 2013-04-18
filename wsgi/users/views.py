@@ -10,6 +10,7 @@ from django.contrib.auth import *
 
 from django.template import Context, loader
 from users.models import *
+import json
 
 
 from django.contrib.auth.models import User
@@ -86,12 +87,12 @@ def addRest(request):
 
 @login_required
 def profile(request):
-	userProfile = UserProfile.objects.get(id = request.user.id)
+#	userProfile = UserProfile.objects.get(user = request.user.id)
 	fav_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in UserRestaurant.objects.filter(user = request.user.id)]
 	bm_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in BMRestaurant.objects.filter(user = request.user.id)]
 	return render(request,'profile.html',
-				{'fav_rest_list': fav_rest_list, 'bm_rest_list':bm_rest_list,
-				'userProfile',userProfile})
+				{'fav_rest_list': fav_rest_list, 'bm_rest_list':bm_rest_list
+				})
 
 @login_required	
 def search(request):
@@ -170,5 +171,20 @@ def restaurantProfile(request,rId):
 
 	return render(request,'restaurantProfile.html', {'obj': Restaurant.objects.filter(id=rId)})
 
+def rlist(request):
+
+	rlist = list(Restaurant.objects.all())
+	response_data=[]
+	r=dict()
+	for item in rlist:
+		
+		r['name']=item.restaurantName
+		r['id']=item.id
+		response_data.append({'name':item.restaurantName, 
+							'id':item.id})
+
+
+
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 

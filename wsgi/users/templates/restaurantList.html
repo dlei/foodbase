@@ -3,6 +3,15 @@
 {% block content %}
 
 
+
+
+<input id='inputSearch' placeholder='Search...' /><input class='fuse-checkbox' id='author' type='checkbox' /><label for='author'>Author</label><input checked='true' class='fuse-checkbox' id='title' type='checkbox' /><label for='title'>Title</label><input class='fuse-checkbox' id='case' type='checkbox' /><label for='case'>Case sensitive</label>
+<p>The results are sorted by score. That is, the ones that match the strongest are first.</p>
+<ul id='results'>
+
+
+
+
 <table>
 <tr><th>Name</th><th>Category</th><th>Rating</th></tr>
 {% for r in obj %}
