@@ -12,7 +12,7 @@ from django.template import Context, loader
 from users.models import *
 import json
 
-
+import SlopeSample as SlopeOne
 from django.contrib.auth.models import User
 
 def index(request):
@@ -185,7 +185,9 @@ def register(request):
 
 
 def restaurantList(request):
-	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all()})
+	p = request.GET.get('page', 0)
+	p = int(p)
+	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all()[p*10:(p+1)*10]    })
 
 
 @login_required
@@ -240,7 +242,21 @@ def rlist(request):
 def recommend(request, uid):
 
 	# get user favorite history
-	favList = list(UserRestaurant.objects.filter(user = User.objects.get(id=request.user.id)))
+	#favList = list(UserRestaurant.objects.filter(user = User.objects.get(id=request.user.id)))
+
+	#s=SlopeOne.init()
+	recommentResult = SlopeOne.result(uid)
+
+	result=[]
+
+	for r in recommentResult:
+		tmp = Restaurant.objects.get(id=r)
+		result.append(tmp)
+
+
+	return render_to_response('restaurantList.html', {'obj': result   })
+
+
 
 
 

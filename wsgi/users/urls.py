@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^restaurantList/$', views.restaurantList, name = 'restaurantList'),
     url(r'^restaurantProfile/(?P<rId>\d+)/$', views.restaurantProfile, name = 'restaurantProfile'),
     url(r'^rlist/$', views.rlist),
+    url(r'^recommend/(?P<uid>\d+)/$', views.recommend, name = 'recommend'),
 
 
 
