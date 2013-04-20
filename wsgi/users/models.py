@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 
 # Create your models here.
 
@@ -23,7 +24,6 @@ class FavoriteRest(models.Model):
     
 class UserRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
-    restaurantName = models.CharField(max_length=128)
     restaurantId = models.IntegerField(unique=True)
     rate = models.IntegerField(default = -1)
 
@@ -51,5 +51,5 @@ class UserProfile(models.Model):
     longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
 
 
-
+ 
 
