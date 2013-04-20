@@ -7,7 +7,7 @@ class CreateUserForm(forms.Form):
 
 	username = forms.CharField(required=True) 
 	password = forms.CharField(required=True, widget=forms.PasswordInput)
-	vegetarian = forms.BooleanField(required=False)
+	#vegetarian = forms.BooleanField(required=False)
 	email = forms.EmailField(required=True)
 
 class AddRestForm(forms.Form):

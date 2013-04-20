@@ -184,3 +184,16 @@ LOGGING = {
         },
     }
 }
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8983/solr'
+        #'TIMEOUT'= 60 * 5,
+        #'INCLUDE_SPELLING'= True,
+        #'BATCH_SIZE'= 100,
+    #'SILENTLY_FAIL'= True,
+    },
+
+}

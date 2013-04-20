@@ -23,6 +23,7 @@ class FavoriteRest(models.Model):
     
 class UserRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
+    restaurantName = models.CharField(max_length=128)
     restaurantId = models.IntegerField(unique=True)
     rate = models.IntegerField(default = -1)
 

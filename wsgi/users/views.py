@@ -38,11 +38,11 @@ def createAccount(request):
 		if form.is_valid():
 			username = form.cleaned_data['username']
 			email = form.cleaned_data['email']
-			vegetarian = form.cleaned_data['vegetarian']
+			#vegetarian = form.cleaned_data['vegetarian']
 			password = form.cleaned_data['password']
 			m = User(username=username,
 				email=email,
-				vegetarian=vegetarian,
+                     #vegetarian=vegetarian,
 				password=password,)
 			m.save()
 			return HttpResponseRedirect('/users')
@@ -54,7 +54,7 @@ def createAccount(request):
 
 
 def profile(request):
-	return HttpResponse("Hello, you have loged in! Enjoy your time.")
+	return HttpResponse("Hello, you have logged in! Enjoy your time.")
 
 
 
@@ -70,7 +70,7 @@ def addRest(request):
 			restUserRate = form.cleaned_data['restUserRate']
 
 
-			m = FavoriteRest(rate=restUserRate,
+			m = UserRestaurant(rate=restUserRate,
 				restaurantName=restName,
 				user=User.objects.get(id=request.user.id),
 				)
@@ -87,12 +87,59 @@ def addRest(request):
 
 @login_required
 def profile(request):
+
+
+	fav_rest_list = UserRestaurant.objects.filter(user = User.objects.get(email=request.user.email))
+
+
+	
+	if (request.method == 'POST') and (request.POST.getlist('ids')):
+
+		if(request.POST.get('delete')):
+
+			ids = request.POST.getlist('ids')
+		
+			idstring = ','.join(ids)
+			UserRestaurant.objects.extra(where = ['id IN ('+ idstring +')']).delete()
+
+		elif(request.POST.get('modify') and request.POST.get('update_val')!='a new rate?'):
+			form = ProfileForm(request.POST)
+			new_rate = request.POST.get('update_val')
+			ids = request.POST.get('ids')
+			new_rate_list = request.POST.getlist('modify_id_list')
+			
+			tmpRest = UserRestaurant.objects.get(id=ids)
+			tmpRest.rate=new_rate
+			tmpRest.save()
+			
+
+			'''
+			OpId = form.cleaned_data['ids']
+			updateRate = form.cleaned_data['modify_ids']
+			tmpRest = FavoriteRest.objects.get(id=ids)
+			tmpRest.rate=modify_ids
+			tmpRest.save()
+			'''
+		return HttpResponseRedirect('/users/profile')
+	else:
+		form = ProfileForm()
+
 #	userProfile = UserProfile.objects.get(user = request.user.id)
 	fav_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in UserRestaurant.objects.filter(user = request.user.id)]
 	bm_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in BMRestaurant.objects.filter(user = request.user.id)]
+
 	return render(request,'profile.html',
 				{'fav_rest_list': fav_rest_list, 'bm_rest_list':bm_rest_list
 				})
+
+
+
+
+
+
+
+
+
 
 @login_required	
 def search(request):
@@ -103,7 +150,7 @@ def search(request):
 
 		keyword = request.POST.get('keyword')
 	
-		result = FavoriteRest.objects.filter(rate = keyword)
+		result = UserRestaurant.objects.filter(rate = keyword)
 
 		return render(request,'profile.html',
 				{'fav_rest_list': result})
@@ -120,7 +167,7 @@ def register(request):
 		if form.is_valid():
 			username = form.cleaned_data['username']
 			email = form.cleaned_data['email']
-			vegetarian = form.cleaned_data['vegetarian']
+			#vegetarian = form.cleaned_data['vegetarian']
 			password = form.cleaned_data['password']
 			
 			user = User.objects.create_user(username,email,password)
@@ -186,5 +233,18 @@ def rlist(request):
 
 
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
+
+
+def recommend(request, uid):
+
+	# get user favorite history
+	favList = list(UserRestaurant.objects.filter(user = User.objects.get(id=request.user.id)))
+
+
+
+
+
 
 
