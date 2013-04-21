@@ -143,7 +143,7 @@ def profile(request):
 
 @login_required	
 def search(request):
-
+	'''
 	if request.method == 'POST':
 
 
@@ -156,7 +156,7 @@ def search(request):
 				{'fav_rest_list': result})
 
 		return HttpResponseRedirect('/users/profile')
-
+	'''
 
 	return render(request,'search.html',
 				{})
@@ -229,8 +229,9 @@ def rlist(request):
 		
 		r['name']=item.restaurantName
 		r['id']=item.id
+
 		response_data.append({'name':item.restaurantName, 
-							'id':item.id})
+							'id':item.id, 'image':item.image, 'ranking':str(item.averageRating)})
 
 
 

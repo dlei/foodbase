@@ -53,18 +53,39 @@
       </div>
     </div>
 	
-	
+		
+		
 <form action="." method="post">
 {% csrf_token %}
 		 <fieldset>
 		<legend> Search the score you desire for the restaurant!</legend>
 		
+
+		
+	<div style="text-align:center">
+		<input id='inputSearch' placeholder='Search...' />
+
+		<label for='restName'>Restaurant Name</label>
+		<input class='fuse-checkbox' id='restName' type='checkbox' />
+	
+		<label for='ranking'>Ranking</label>
+		<input class='fuse-checkbox' id='ranking' type='checkbox' />
+	</div>	
+
+	<div id='results' align='center'>
+	</div>
+	
+		<!--
 		<div style="text-align:center">
         <input type="text" placeholder="Check it out!" name="keyword" value="" class="btn"/>
 		<input type="submit" value="Search" class="btn" class="btn" />
 		</div>
-		
+		-->
 		</fieldset>
 </form>
 
+		<script script type="text/javascript" src="{{ STATIC_PREFIX }}js/jqtime.js"></script>  <!-- min library -->
+		<script script type="text/javascript" src="{{ STATIC_PREFIX }}js/fuse.js"></script>
+		<script script type="text/javascript" src="{{ STATIC_PREFIX }}js/run.js"></script>
+		
 {% endblock %}

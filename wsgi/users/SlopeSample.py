@@ -1,7 +1,7 @@
 
 from copy import *
 from models import *
-
+from random import randint
 class SlopeOne(object):
     def __init__(self):
         self.diffs = {}
@@ -81,6 +81,7 @@ def init():
 
 
 def result(uid):
+    result = dict()
     users = UserRestaurant.objects.all().values('user').annotate(user_count=Count('user'))
     globalDict=dict()
     for user in users:
@@ -91,7 +92,7 @@ def result(uid):
 
 
         globalDict[user['user']] = deepcopy(user_dict)
-    print globalDict    
+    #print globalDict    
 
     s=SlopeOne()
     s.update(globalDict)
@@ -105,12 +106,22 @@ def result(uid):
             u[int(r.restaurantId)] = int(r.rate)
     #print u
     #u={8: 5, 9:2, 7:4, 52:2, 67:3}
-    #u = {8: 3, 9: 3, 52: 4, 7: 5, 98:2}
+    #u = {8: 3}
+
+    result = s.predict(u)
+    #if()
+    if (len(result)==0):
+        #restaurants = Restaurant.objects.all()
+        n = len(Restaurant.objects.all())
+        for i in xrange(5):
+            pp = randint(1,n)
+            result[pp] = 5
 
 
-    print s.predict(u)
+    #print u[8]
+    #print s.predict(u)
 
-    return s.predict(u)
+    return result
 
 
 

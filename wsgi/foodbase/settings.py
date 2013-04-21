@@ -154,6 +154,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'users',
     'crispy_forms',
+#    'haystack',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -183,17 +184,4 @@ LOGGING = {
             'propagate': True,
         },
     }
-}
-
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr'
-        #'TIMEOUT'= 60 * 5,
-        #'INCLUDE_SPELLING'= True,
-        #'BATCH_SIZE'= 100,
-    #'SILENTLY_FAIL'= True,
-    },
-
 }
