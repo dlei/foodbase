@@ -4,17 +4,26 @@
 
 
 
-
-
-
-
-<table>
-<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
 {% for r in obj %}
-<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
-{% endfor %}
-</table>
-{{ request.current_page.get_next_sibling }}
-{{ request.current_page.get_previous_sibling }}
 
+<div class="result-item" align="center">
+
+	<a href="http://127.0.0.1:8000/users/restaurantProfile/{{r.id}}"><img src="{{r.image}}" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" height="200" width="200"/></a>
+		<p>{{ r.restaurantName }}</p>
+		<p>{{ r.category }}</p>
+		<p>{{ r.averageRating }}</p>
+
+</div>
+{% endfor %}
+
+
+
+
+<div><a href="http://127.0.0.1:8000/users/restaurantList/?page={{nextpage}}"><input type="submit" value="PrevPage" class="btn"></a></div>
+<div><a href="http://127.0.0.1:8000/users/restaurantList/?page={{nextpage}}"><input type="submit" value="NextPage" class="btn"></a></div>
+
+
+<script script type="text/javascript" src="{{ STATIC_PREFIX }}js/changepage.js"></script>
 {% endblock %}
+
+

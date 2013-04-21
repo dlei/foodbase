@@ -3,20 +3,34 @@
 {% block content %}
 
 
-
+<div align="center">
 <table>
-<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+<tr>
+	<th  style="padding:10px;">Name</th>
+	<th  style="padding:10px;">Category</th>
+	<th  style="padding:10px;">Rating</th>
+	<th  style="padding:10px;">Phone Number</th>
+	<th  style="padding:10px;">Address</th>
+</tr>
 {% for r in obj %}
-<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+	<img src="{{r.image}}" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" height="350" width="350" />
+	<tr>
+		<td  style="padding:10px;">{{ r.restaurantName }}</td>
+		<td  style="padding:10px;">{{ r.category }}</td>
+		<td  style="padding:10px;">{{ r.averageRating }}</td>
+		<td  style="padding:10px;">{{ r.phone }}</td>
+		<td  style="padding:10px;">{{ r.address }}</td>
+	</tr>
 {% endfor %}
 </table>
 
 
 <form action="." method="POST">
 	{% csrf_token %}
-	<input type="submit" name="bookmark" value="Bookmark" class="btn"/>
-	<input type="submit" name="favorite" value="Add to my Favorite" class="btn"/>
+	<input type="submit" name="bookmark" value="Bookmark" class="btn" style="padding:10px;"/>
+	<input type="submit" name="favorite" value="Add to my Favorite" class="btn" style="padding:10px;"/>
 </form>
-
+	<a href="{% url 'rateSearch'%}"> <input type="submit" name="goback" value="gotomainPage" class="btn" style="padding:20px;" /> </a>
+</div>
 
 {% endblock %}

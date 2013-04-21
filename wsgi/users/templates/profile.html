@@ -36,23 +36,45 @@
 	
 
 
-  <table>
-    Favorite!!!!
-<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
+<div class="box-table">
+ <table align='center'>
+ <tr>
+    <th colspan="3">Favorite!!!!</th>
+</tr>
+<tr>
+	<th style="padding:15px;">Name</th>
+	<th style="padding:15px;">Category</th>
+	<th style="padding:15px;">Rating</th>
+</tr>
 {% for r in fav_rest_list %}
-<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+<tr>
+	<td style="padding:15px;">{{ r.restaurantName }}</td>
+	<td style="padding:15px;">{{ r.category }}</td>
+	<td style="padding:15px;">{{ r.averageRating }}</td>
+</tr>
 {% endfor %}
 </table>
+</div>
 
+<div class="box-table">
+  <table align='center'>
+ <tr>
+    <th colspan="3"> Bookmarked!!!!</th>
+</tr>
+<tr>
+	<th style="padding:15px;">Name</th>
+	<th style="padding:15px;">Category</th>
+	<th style="padding:15px;">Rating</th>
+</tr>
 
-
-  <table>
-    Bookmarked!!!!
-<tr><th>Name</th><th>Category</th><th>Rating</th></tr>
 {% for r in bm_rest_list %}
-<tr><td>{{ r.restaurantName }}</td><td>{{ r.category }}</td><td>{{ r.averageRating }}</td></tr>
+<tr>
+	<td style="padding:15px;">{{ r.restaurantName }}</td>
+	<td style="padding:15px;">{{ r.category }}</td>
+	<td style="padding:15px;">{{ r.averageRating }}</td>
+</tr>
 {% endfor %}
 </table>
-
+</div>
 {% endblock %}
 

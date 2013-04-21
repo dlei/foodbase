@@ -187,7 +187,7 @@ def register(request):
 def restaurantList(request):
 	p = request.GET.get('page', 0)
 	p = int(p)
-	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all()[p*10:(p+1)*10]    })
+	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all() [p*10:(p+1)*10] , 'nextpage':(p+1)   })
 
 
 @login_required
@@ -212,9 +212,6 @@ def restaurantProfile(request,rId):
 				user=User.objects.get(id=request.user.id),
 				)
 			m.save()
-
-
-
 
 
 

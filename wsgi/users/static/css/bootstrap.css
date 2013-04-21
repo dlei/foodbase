@@ -12353,11 +12353,6 @@ background: url(http://ringvemedia.com/server//bg.jpg) no-repeat center center f
 background-size: cover;
 }
 
-*
-{
- border:0px;
- } 
-
 
  
  body {
@@ -12375,4 +12370,7 @@ background-size: cover;
       margin: 0 auto;
 	border-radius:10%;
 }
->>>>>>> eb1f785f1b073f627f736f04c9a61dfda37ca095
+
+.box-table {
+	padding-bottom:30px;
+}
