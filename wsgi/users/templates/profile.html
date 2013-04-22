@@ -4,39 +4,11 @@
 
 
 {% block content %}
-<div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="/users">FoodBase</a>
-          <div class="nav-collapse collapse">
-            {% block sidebar %}
-            <ul class="nav">
-              <li><a href="/users">Home</a></li>
-              
-              <li><a href="{% url 'createAccount'%}">Register</a></li>
-              <li><a href="{% url 'addRest'%}">Add Restaurant</a></li>
-              <li class="active"><a href="{% url 'profile'%}">My Profile</a></li>
-              <li><a href="{% url 'rateSearch'%}">Search</a></li>
-              <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">About</a></li>
-              <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">Contact</a></li>
-              
-            </ul>
-
-{% endblock %}
-
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-	
+{% block nav-profile %} <li class="active"><a href="{% url 'restaurantList'%}">My Profile</a></li>{% endblock %}
 
 
-<div class="box-table">
+
+<div class="box-table" >
  <table align='center'>
  <tr>
     <th colspan="3">Favorite!!!!</th>

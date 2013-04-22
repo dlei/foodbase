@@ -8,7 +8,7 @@
 
 <div class="result-item" align="center">
 
-	<a href="http://127.0.0.1:8000/users/restaurantProfile/{{r.id}}"><img src="{{r.image}}" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" height="200" width="200"/></a>
+	<a href="../restaurantProfile/{{r.id}}"><img src="{{r.image}}" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" height="200" width="200"/></a>
 		<p>{{ r.restaurantName }}</p>
 		<p>{{ r.category }}</p>
 		<p>{{ r.averageRating }}</p>
@@ -18,9 +18,8 @@
 
 
 
-
-<div><a href="http://127.0.0.1:8000/users/restaurantList/?page={{nextpage}}"><input type="submit" value="PrevPage" class="btn"></a></div>
-<div><a href="http://127.0.0.1:8000/users/restaurantList/?page={{nextpage}}"><input type="submit" value="NextPage" class="btn"></a></div>
+<div><a href="./?page={{prevpage}}"><input type="submit" value="PrevPage" class="btn"></a></div>
+<div><a href="./?page={{nextpage}}"><input type="submit" value="NextPage" class="btn"></a></div>
 
 
 {% endblock %}

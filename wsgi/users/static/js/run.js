@@ -19,7 +19,7 @@ $(function() {
       var r = fuse.search($inputSearch.val());
       $result.empty();
       $.each(r, function() {
-			$result.append('<a href="http://127.0.0.1:8000/users/restaurantProfile/' + this.id + ' "><div class="result-item"> ' +   ' <img src=" ' + this.image +' " alt="Image not found" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" width="200" height="200" /> </a> ' + '<p>' + this.name  + ' , ' + this.ranking + '</p></div>');
+			$result.append('<a href="../restaurantProfile/' + this.id + ' "><div class="result-item"> ' +   ' <img src=" ' + this.image +' " alt="Image not found" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" width="200" height="200" /> </a> ' + '<p>' + this.name  + ' , ' + this.ranking + '</p></div>');
 	  });
     }
 	
@@ -67,7 +67,7 @@ $(function() {
 
   
 
-  $.getJSON('http://127.0.0.1:8000/users/rlist/', function(data) {
+  $.getJSON('../rlist/', function(data) {
 
      start(data);
   });

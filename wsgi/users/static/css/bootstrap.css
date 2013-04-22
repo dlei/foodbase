@@ -12346,7 +12346,7 @@ a.badge:focus {
 }
 
 html {
-background: url(http://ringvemedia.com/server//bg.jpg) no-repeat center center fixed;
+background: url(http://db.tt/KpBTq3VD) no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
@@ -12374,3 +12374,14 @@ background-size: cover;
 .box-table {
 	padding-bottom:30px;
 }
+
+
+
+
+
+
+.consec_form{
+  display:inline-block;
+}
+
+fieldset { overflow:hidden }

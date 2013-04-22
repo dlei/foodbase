@@ -86,11 +86,5 @@ def crawl(area, iteCount):
 
 def main():
 
-    for i in xrange(2,5):
+    for i in xrange(8,19):
         crawl('champaign',i)
-
-
-
-
-
-

@@ -30,6 +30,25 @@
 	<input type="submit" name="bookmark" value="Bookmark" class="btn" style="padding:10px;"/>
 	<input type="submit" name="favorite" value="Add to my Favorite" class="btn" style="padding:10px;"/>
 </form>
+
+
+
+
+<form action="" method="POST">
+	{% csrf_token %}
+	Visited:
+<select name="rate">
+  <option value =1>1</option>
+  <option value =2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+</select>
+<input type="submit" value="Rate!">
+</form>
+
+
+
 	<a href="{% url 'rateSearch'%}"> <input type="submit" name="goback" value="gotomainPage" class="btn" style="padding:20px;" /> </a>
 </div>
 
