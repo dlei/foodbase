@@ -12379,9 +12379,13 @@ background-size: cover;
 
 
 
-
 .consec_form{
   display:inline-block;
 }
 
 fieldset { overflow:hidden }
+
+.box {
+    background: rgba(255, 255, 255, 0.7);
+	white-space:pre-wrap;padding:1em;margin:1em;border-radius:1em;box-shadow:0px 1px 5px rgba(0,0,0,0.5); filter:alpha(opacity=30);*opacity:0.3;
+}

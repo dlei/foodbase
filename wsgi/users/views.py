@@ -199,7 +199,7 @@ def register(request):
 def restaurantList(request):
 	p = request.GET.get('page', 0)
 	p = int(p)
-	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all() [p*10:(p+1)*10] , 'nextpage':(p+1), 'prevpage':(p-1)   })
+	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all() [p*9:(p+1)*9] , 'nextpage':(p+1), 'prevpage':(p-1)   })
 
 
 @login_required
