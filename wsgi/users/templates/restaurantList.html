@@ -7,7 +7,7 @@
 {% for r in obj %}
 
 <div class="result-item" align="center"  class="box">
-<div id="box">
+<div class="box">
 	<a href="../restaurantProfile/{{r.id}}"><img src="{{r.image}}" onError = "{{ STATIC_PREFIX }}/img/ad.jpg" height="200" width="200"/></a>
 		<p>{{ r.restaurantName }}</p>
 		<p>{{ r.category }}</p>
