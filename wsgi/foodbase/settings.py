@@ -100,6 +100,8 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #'/Users/dlei/Dropbox/cs 411/Project/foodbase/static'
+    "/Users/dlei/cs411/foodbase/wsgi/static",
+    "os.environ.get('OPENSHIFT_REPO_DIR','')/static",
 )
 
 # List of finder classes that know how to find static files in
