@@ -19,6 +19,7 @@ class SlopeOne(object):
                 freqs.setdefault(diffitem, 0)
                 preds[diffitem] += freq * (diffratings[item] + rating)
                 freqs[diffitem] += freq
+        print preds,freqs,self.diffs, self.freqs
         return dict([(item, value / freqs[item])
                      for item, value in preds.iteritems()
                      if item not in userprefs and freqs[item] > 0])
@@ -35,7 +36,8 @@ class SlopeOne(object):
                     self.diffs[item1][item2] += rating1 - rating2
         for item1, ratings in self.diffs.iteritems():
             for item2 in ratings:
-                ratings[item2] /= self.freqs[item1][item2]
+                ratings[item2] /= 1.0*self.freqs[item1][item2]
+                
 '''
 if __name__ == '__main__':
     userdata = dict(
@@ -88,16 +90,16 @@ def result(uid):
         userObj = User.objects.get(id=user['user'])
         user_dict=dict()
         for r in UserRestaurant.objects.filter(user=userObj):
-            user_dict[r.restaurantId] = r.rate
+            user_dict[int(r.restaurantId)] = int(r.rate)
 
 
-        globalDict[user['user']] = deepcopy(user_dict)
+        globalDict[int(user['user'])] = deepcopy(user_dict)
     #print globalDict    
 
     s=SlopeOne()
     s.update(globalDict)
 
-
+    print globalDict
     userObj = User.objects.get(id=uid)
     u=dict()
 
@@ -107,8 +109,9 @@ def result(uid):
     #print u
     #u={8: 5, 9:2, 7:4, 52:2, 67:3}
     #u = {8: 3}
-
+    print u
     result = s.predict(u)
+    print result
     #if()
     if (len(result)==0):
         #restaurants = Restaurant.objects.all()

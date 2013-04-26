@@ -24,8 +24,13 @@ class FavoriteRest(models.Model):
     
 class UserRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
-    restaurantId = models.IntegerField(unique=True)
+    restaurantId = models.IntegerField()
     rate = models.IntegerField(default = -1)
+    class Meta:  
+        unique_together = ('restaurantId', 'user')  
+      
+    primary = ('restaurantId', 'user')  
+
 
 
 class Restaurant(models.Model):
@@ -43,7 +48,11 @@ class Restaurant(models.Model):
 
 class BMRestaurant(models.Model):
     user =models.ForeignKey('auth.User')
-    restaurantId = models.IntegerField(unique=True)
+    restaurantId = models.IntegerField()
+    class Meta:  
+        unique_together = ('restaurantId', 'user')  
+      
+    primary = ('restaurantId', 'user')
 
 class UserProfile(models.Model):
     user = models.ForeignKey('auth.User')

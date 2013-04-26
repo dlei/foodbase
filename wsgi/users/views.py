@@ -12,9 +12,9 @@ from django.template import Context, loader
 from users.models import *
 import json
 
-import SlopeSample as SlopeOne
+import SlopeOne
 from django.contrib.auth.models import User
-
+import operator
 
 '''
 
@@ -153,7 +153,6 @@ def profile(request):
 
 
 
-@login_required	
 def search(request):
 	'''
 	if request.method == 'POST':
@@ -202,7 +201,6 @@ def restaurantList(request):
 	return render_to_response('restaurantList.html', {'obj': Restaurant.objects.all() [p*9:(p+1)*9] , 'nextpage':(p+1), 'prevpage':(p-1)   })
 
 
-@login_required
 def restaurantProfile(request,rId):
 
 	if request.method == 'POST':
@@ -257,22 +255,23 @@ def rlist(request):
 
 
 
-
-def recommend(request, uid):
+@login_required
+def recommend(request,uid):
 
 	# get user favorite history
 	#favList = list(UserRestaurant.objects.filter(user = User.objects.get(id=request.user.id)))
-
+	#uid = request.user.id
 	#s=SlopeOne.init()
 	recommentResult = SlopeOne.result(uid)
-
+	sorted_result = sorted(recommentResult.iteritems(), key = operator.itemgetter(1), reverse=True)
+	sorted_result = sorted_result[:9]
+	print sorted_result
 	result=[]
 
-	for r in recommentResult:
-		tmp = Restaurant.objects.get(id=r)
+	for r in sorted_result:
+		tmp = Restaurant.objects.get(id=r[0])
 		result.append(tmp)
-
-
+	
 	return render_to_response('restaurantList.html', {'obj': result   })
 
 
