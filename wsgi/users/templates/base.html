@@ -30,24 +30,22 @@ topmargin="0">
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+		
           <a class="brand" href="/users">FoodBase</a>
           <div class="nav-collapse collapse">
            
             <ul class="nav">
-              <li class=""><a href="/users">Home</a></li>
+			
+              {% block nav-home%}<li><a href="/users">Home</a></li>{% endblock %}
               
-              <li><a href="{% url 'createAccount'%}">Register</a></li>
-              <li>{% block nav-browse %}<a href="{% url 'restaurantList'%}">Browse Restaurants</a>{% endblock %}
-</li>
-              <li>{% block nav-profile %}<a href="{% url 'profile'%}">My Profile</a>{% endblock %}
-</li>
-              <li>{% block nav-search %}<a href="{% url 'rateSearch'%}">Search</a>{% endblock %}
-</li>
+              {% block nav-register%}<li><a href="{% url 'createAccount'%}">Register</a></li>{% endblock %}
+              {% block nav-browse %}<li><a href="{% url 'restaurantList'%}">Browse Restaurants</a></li>{% endblock %}
+
+              {% block nav-profile %}<li><a href="{% url 'profile'%}">My Profile</a></li>{% endblock %}
+
+              {% block nav-search %}<li><a href="{% url 'rateSearch'%}">Search</a>
+</li>{% endblock %}
+
               <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">About</a></li>
               <li><a href="https://wiki.engr.illinois.edu/display/cs411sp13/EatersFund">Contact</a></li>
 
@@ -65,17 +63,13 @@ topmargin="0">
 
 
 
-
-
-    <div class="container" id="content" color="red">
-
       
 
         {% block content %}
 
         {% endblock %}
       
-
+	<div class="container" id="content" color="red">
       <footer>
         <p>&copy; EatersFund 2013</p>
       </footer>

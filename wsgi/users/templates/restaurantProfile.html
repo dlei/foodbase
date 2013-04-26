@@ -23,17 +23,20 @@
 	</tr>
 {% endfor %}
 </table>
+</div>
 
 
+<div class="box-table" align="center">
+
+<div class="concat">
 <form action="." method="POST">
 	{% csrf_token %}
 	<input type="submit" name="bookmark" value="Bookmark" class="btn" style="padding:10px;"/>
-	<input type="submit" name="favorite" value="Add to my Favorite" class="btn" style="padding:10px;"/>
+	<!-- <input type="submit" name="favorite" value="Add to my Favorite" class="btn" style="padding:10px;"/> -->
 </form>
+</div>
 
-
-
-
+<div class="concat">
 <form action="" method="POST">
 	{% csrf_token %}
 	Visited:
@@ -44,12 +47,14 @@
   <option value=4>4</option>
   <option value=5>5</option>
 </select>
-<input type="submit" value="Rate!">
+<input type="submit" value="Rate!" class="btn">
 </form>
+</div>
 
+</div>
 
-
-	<a href="{% url 'rateSearch'%}"> <input type="submit" name="goback" value="gotomainPage" class="btn" style="padding:20px;" /> </a>
+<div align="center">
+<a href="{% url 'rateSearch'%}"> <input type="submit" name="goback" value="gotomainPage" class="btn" style="padding:20px;" /> </a>
 </div>
 
 {% endblock %}
