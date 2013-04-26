@@ -102,6 +102,7 @@ STATICFILES_DIRS = (
     #'/Users/dlei/Dropbox/cs 411/Project/foodbase/static'
     "/Users/dlei/cs411/foodbase/wsgi/static",
     "os.environ.get('OPENSHIFT_REPO_DIR','')/static",
+	"C:/Users/Guangzhe Gao/Documents/GitHub/foodbase/wsgi/static",
 )
 
 # List of finder classes that know how to find static files in

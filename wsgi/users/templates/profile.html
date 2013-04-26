@@ -3,14 +3,16 @@
 {% block title %}Add a Favorite Restaurant{% endblock %}
 
 
+{% block nav-profile %}<li class="active"><a href="{% url 'profile'%}">My Profile</a></li>{% endblock %}
+
 {% block content %}
 
 
 
-<div class="box-table">
+<div class="box-table" align=center>
  <table align='center' class="box">
  <tr>
-    <th colspan="3">Favorite!!!!</th>
+    <th colspan="3">Visted Restaurants</th>
 </tr>
 <tr>
 	<th style="padding:15px;">Name</th>
@@ -27,10 +29,10 @@
 </table>
 </div>
 
-<div class="box-table">
+<div class="box-table" align=center>
   <table align='center' class="box">
  <tr>
-    <th colspan="3"> Bookmarked!!!!</th>
+    <th colspan="3"> Bookmarked Restaurant</th>
 </tr>
 <tr>
 	<th style="padding:15px;">Name</th>
@@ -47,5 +49,8 @@
 {% endfor %}
 </table>
 </div>
-{% endblock %}
 
+
+<div class="cent"><a href="{% url 'recommend'%}"> <input type="submit" name="gotoRec" value="go to Recommended Restaurant" class="btn" style="padding:20px;" /> </a></div>
+
+{% endblock %}

@@ -12372,9 +12372,9 @@ background-size: cover;
 }
 
 .box-table {
+	padding-top:20px;
 	padding-bottom:30px;
 }
-
 
 
 
@@ -12389,3 +12389,20 @@ fieldset { overflow:hidden }
     background: rgba(255, 255, 255, 0.7);
 	white-space:pre-wrap;padding:1em;margin:1em;border-radius:1em;box-shadow:0px 1px 5px rgba(0,0,0,0.5); filter:alpha(opacity=30);*opacity:0.3;
 }
+
+.concat {
+	display:inline-block;
+}
+
+.searchbar {
+    background: rgba(255, 255, 255, 0.7);
+	filter:alpha(opacity=30);*opacity:0.3;
+	
+	width: 50%;
+	margin: 0 auto;
+}
+
+.cent {
+    text-align:center;
+}
+

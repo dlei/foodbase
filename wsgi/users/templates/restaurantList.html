@@ -1,7 +1,11 @@
 
 {% extends "base.html" %}
-{% block content %}
 
+
+
+{% block nav-browse %}<li class="active"><a href="{% url 'restaurantList'%}">Browse Restaurants</a></li>{% endblock %}
+
+{% block content %}
 
 
 {% for r in obj %}
@@ -12,18 +16,14 @@
 		<p>{{ r.restaurantName }}</p>
 		<p>{{ r.category }}</p>
 		<p>{{ r.averageRating }}</p>
-		
-		<div><a href="./?page={{prevpage}}"><input type="submit" value="PrevPage" class="btn"></a></div>
-	<div><a href="./?page={{nextpage}}"><input type="submit" value="NextPage" class="btn"></a></div>
 </div>
 
 </div>
 {% endfor %}
 
 
-
-
-
+	<div align="center"><a href="./?page={{prevpage}}"><input type="submit" value="PrevPage" class="btn"></a></div>
+	<div align="center"><a href="./?page={{nextpage}}"><input type="submit" value="NextPage" class="btn"></a></div>
 
 {% endblock %}
 
