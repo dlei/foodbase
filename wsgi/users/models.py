@@ -59,6 +59,9 @@ class UserProfile(models.Model):
     lattitude = models.DecimalField(max_digits = 6, decimal_places = 4)
     longtitude = models.DecimalField(max_digits = 6, decimal_places = 4)
 
+class JoinRU(models.Model):
+    user = models.ForeignKey(UserRestaurant)
+    restaurant = models.ForeignKey(Restaurant)
 
  
 

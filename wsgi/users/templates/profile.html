@@ -17,13 +17,16 @@
 <tr>
 	<th style="padding:15px;">Name</th>
 	<th style="padding:15px;">Category</th>
-	<th style="padding:15px;">Rating</th>
+	<th style="padding:15px;">SiteWide Rating</th>
+	<th style="padding:15px;">User Rating</th>
 </tr>
 {% for r in fav_rest_list %}
 <tr>
 	<td style="padding:15px;">{{ r.restaurantName }}</td>
 	<td style="padding:15px;">{{ r.category }}</td>
 	<td style="padding:15px;">{{ r.averageRating }}</td>
+	<td style="padding:15px;">{{ r.userRating }}</td>
+	<td><a href="../restaurantProfile/{{r.id}}"> <input type="submit" name="gotoRec" value="Detail" class="btn"  /> </a></td>
 </tr>
 {% endfor %}
 </table>
@@ -45,6 +48,8 @@
 	<td style="padding:15px;">{{ r.restaurantName }}</td>
 	<td style="padding:15px;">{{ r.category }}</td>
 	<td style="padding:15px;">{{ r.averageRating }}</td>
+	<td><a href="../restaurantProfile/{{r.id}}"> <input type="submit" name="gotoRec" value="Edit" class="btn"  /> </a></td>
+</form>
 </tr>
 {% endfor %}
 </table>

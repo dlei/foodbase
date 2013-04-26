@@ -139,9 +139,22 @@ def profile(request):
 #	userProfile = UserProfile.objects.get(user = request.user.id)
 	fav_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in UserRestaurant.objects.filter(user = request.user.id)]
 	bm_rest_list = [Restaurant.objects.get(id=i.restaurantId) for i in BMRestaurant.objects.filter(user = request.user.id)]
+	#user_fav_list = UserRestaurant.objects.filter(user = request.user.id)
+	ulist=[]
+	for item in fav_rest_list:
+
+		uu = UserRestaurant.objects.get(restaurantId=item.id, user=User.objects.get(id=request.user.id)).rate
+		ulist.append({'restaurantName':item.restaurantName, 
+							'id':item.id, 'category':item.category, 'averageRating':item.averageRating, 'userRating':uu})
+
+
+
+
+
+
 
 	return render(request,'profile.html',
-				{'fav_rest_list': fav_rest_list, 'bm_rest_list':bm_rest_list
+				{'fav_rest_list': ulist, 'bm_rest_list':bm_rest_list
 				})
 
 
@@ -203,6 +216,8 @@ def restaurantList(request):
 
 def restaurantProfile(request,rId):
 
+	#ifbookmarked = if BMRestaurant.objects.filter(restaurantId=rId)
+
 	if request.method == 'POST':
 		if request.POST.get('favorite'):
 			# add user restaurant relation
@@ -226,12 +241,21 @@ def restaurantProfile(request,rId):
 		elif(request.POST.get('rate')):
 			r = request.POST.get('rate')
 			#r = round(r,1)
-			m = UserRestaurant(rate=r,
-				restaurantId=rId,
-				user=User.objects.get(id=request.user.id),
-				)
-			m.save()			
+			rInstance = UserRestaurant.objects.filter(restaurantId=rId, user=User.objects.get(id=request.user.id))
+			if not rInstance:
+				m = UserRestaurant(rate=r,
+					restaurantId=rId,
+					user=User.objects.get(id=request.user.id),
+					)
+				m.save()
+			else:
+				rInstance.update(rate=r)
+				#rInstance.save()
 
+
+		elif(request.POST.get('delete')):
+			#deleteid = request.POST.get('delete')			
+			BMRestaurant.objects.filter(restaurantId=rId).delete()
 
 
 	return render(request,'restaurantProfile.html', {'obj': Restaurant.objects.filter(id=rId)})
@@ -256,11 +280,11 @@ def rlist(request):
 
 
 @login_required
-def recommend(request,uid):
+def recommend(request):
 
 	# get user favorite history
 	#favList = list(UserRestaurant.objects.filter(user = User.objects.get(id=request.user.id)))
-	#uid = request.user.id
+	uid = request.user.id
 	#s=SlopeOne.init()
 	recommentResult = SlopeOne.result(uid)
 	sorted_result = sorted(recommentResult.iteritems(), key = operator.itemgetter(1), reverse=True)
