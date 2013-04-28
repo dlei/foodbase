@@ -1,40 +1,8 @@
-/**
- * Fuse - Lightweight fuzzy-search
- *
- * Copyright (c) 2012 Kirollos Risk <kirollos@gmail.com>.
- * All Rights Reserved. Apache Software License 2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 
 (function () {
 
-    /**
-     * Adapted from "Diff, Match and Patch", by Google
-     *
-     *   http://code.google.com/p/google-diff-match-patch/
-     *
-     * Modified by: Kirollos Risk <kirollos@gmail.com>
-     * -----------------------------------------------
-     * Details: the algorithm and structure was modified to allow the creation of
-     * <Searcher> instances with a <search> method inside which does the actual
-     * bitap search. The <pattern> (the string that is searched for) is only defined
-     * once per instance and thus it eliminates redundant re-creation when searching
-     * over a list of strings.
-     *
-     * Licensed under the Apache License, Version 2.0 (the "License");
-     * you may not use this file except in compliance with the License.
-     */
+
     function Searcher(pattern, options) {
         options = options || {};
 
